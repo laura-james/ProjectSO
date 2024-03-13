@@ -1,0 +1,29 @@
+{% extends 'navbar.html'%}
+{%block title%} Report Item {%endblock%}               
+{% block content %}
+<div class="report__page" id="report-page">
+  <div class="report__container">
+    <h1>Report Item</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <p><label for="name">Item Name</label><input name="name" id="name" value="{{name}}"></p>
+      <p><label for="colour">Item Colour</label><input name="colour" value="{{colour}}"></p>
+      <p><label for="room">Item Room</label><input name="room" value="{{room}}"></p>
+      <p><label for="room">Date</label><input name="date" value="{{date}}" type="date"></p>
+      <p><label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" cols="50"></textarea></p>
+      <p><label for="room">Item Status</label>
+      <select name="status">
+        {% for st in allstatuses %}
+            <option value="{{ st }}" {% if st == status %} selected {% endif %}> {{ st }} </option>
+        {% endfor %}
+      </select>
+        </p>
+      <p><label for="image">Image</label><input name="image" type="file" accept="image/png, image/jpeg, image/gif, image/avif, image/webp"></p>
+      <img src='static/images/{{image}}' height="200"/>
+      <p><input type="submit" value="Submit"></p>
+
+    </form>
+    <strong>{{msg}}</strong>
+  </div>
+</div>
+{% endblock %}

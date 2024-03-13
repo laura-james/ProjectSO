@@ -1,0 +1,23 @@
+{% extends 'navbar.html' %} 
+{% block content %}
+<div class="items-list" id="items-list-page">
+<h1>All Items</h1>
+<table border = "1"> 
+  {%- for row in rows %}
+  {% set row = row if row is defined else {} %}
+  <tr>
+    <td>{{row["name"]}}</td>
+    <td>{{row["colour"]}}</td>
+    <td>{{row["room"]}}</td>
+    <td>{{row["date"]}}</td>
+    <td>{{row["status"]}}</td>
+    <td>{{row["description"]}}</td>
+    <td><img src='static/images/{{row["image"]}}' width="70" height="70"/></td>
+    <td><a href ='/edit_item?id={{row["id"]}}'>EDIT</a></td>
+    <td><a href ='/delete_item?id={{row["id"]}}'>DELETE</a></td>
+  </tr>
+  {%- endfor %}
+</table>
+</div>
+
+{% endblock %}

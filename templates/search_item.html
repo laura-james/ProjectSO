@@ -1,0 +1,26 @@
+{% extends 'navbar.html' %} 
+{%block title%} Search Item {%endblock%}   
+{% block content %}
+<div class="search__page" id="search-page" >
+  <div class="search__container">
+    <h1>Search Item</h1>
+    <form method="POST" action='/items_list_filter'>
+      <p><label for="name">Item Name</label><input name="name" id="name" value="{{name}}"></p>
+      <p><label for="colour">Item Colour</label><input name="colour" value="{{colour}}"></p>
+      <p><label for="room">Item Room</label><input name="room" value="{{room}}"></p>
+      <p><label for="date">Date</label><input name="date" value="{{date}}" type="date"></p>
+      <p><label for="status">Item Status</label>
+      <select name="status">
+        {% for st in allstatuses %}
+            <option value="{{ st }}" {% if st == status %} selected {% endif %}> {{ st }} </option>
+        {% endfor %}
+      </select>
+        </p>
+      <input type="submit" value="Search">
+      </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

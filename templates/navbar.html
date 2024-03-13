@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lost Property</title>
+    <link
+      rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="h4ndb81gqeoetw1ld63cgzmqw4kndkkv"
+      crossorigin="anonymous"
+    <link rel="stylesheet" href="/static/styles.css">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/home_page" id="navbar__logo">LOST PROPERTY</a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span> <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/home_page" class="navbar__links" id="home-page">Home</a>
+          </li>
+          <li class="navbar__item">
+            <a href="#about" class="navbar__links" id="about-page">About</a>
+          </li>
+          <li class="navbar__item">
+            <a href="#services" class="navbar__links" id="services-page">Services</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/runonce" class="navbar__links" id="DB-setup">DB set up</a></li>
+          <li class="navbar__btn">
+            <a href="#admin-login" class="button" id="signup">Admin Login</a>
+
+          </li>
+        </ul>
+
+        {% block content %}{% endblock %}
+        
+        <script src="/static/main.js"></script>
+
+      </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {%for category, message in messages %}
+      {%if category == 'error' %}
+      <div class="alert alert-danger alter-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div
+        {%else%}
+      <div class="alert alert-success alter-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {%endif%}
+      {%endfor%}
+    {%endif%}
+    {%endwith%}
+    
+
